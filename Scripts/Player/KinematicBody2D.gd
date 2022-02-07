@@ -102,7 +102,7 @@ func _physics_process(delta):
 			$AnimatedSprite.play("Idle")
 	
 	if is_on_floor() || !coyote_timer.is_stopped():
-		if Input.is_action_just_pressed("ui_select"):
+		if Input.is_action_just_pressed("ui_select") || Input.is_action_pressed("ui_up"):
 			coyote_timer.stop()
 			jumping = true
 			motion.y = JUMP_HEIGHT*delta
