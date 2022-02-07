@@ -3,4 +3,4 @@
 
 Work in Progress
 
-(/screenshots/5522.png?raw=true "Game")
+![Game](/screenshots/5522.png?raw=true)
