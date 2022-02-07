@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/Projectiles/EnemyFireBall.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Erana Iasana_assets_FXes/0.0001/light_turret_prototype.fx.projectile/projectile7-1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Erana Iasana_assets_FXes/0.0001/light_turret_prototype.fx.projectile/projectile7-2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Erana Iasana_assets_FXes/0.0001/light_turret_prototype.fx.projectile/projectile7-3.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4, 4 )
+
+[node name="FireBall" type="KinematicBody2D"]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.2, 2 )
+frames = SubResource( 2 )
+frame = 2
+playing = true
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 4, 4 )
+shape = SubResource( 1 )

@@ -1,0 +1,173 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/GFX/Sprites/Tiles/generic_platformer_tiles.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 8 )
+
+[node name="generic_platformer_tiles" type="Node2D"]
+
+[node name="LeftBridge" type="Sprite" parent="."]
+position = Vector2( -20, 100 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 672, 288, 96, 96 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="LeftBridge"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LeftBridge/StaticBody2D"]
+polygon = PoolVector2Array( -32, -16, 48, 48, 48, 32, -32, -24 )
+
+[node name="LeftBridge1" type="Sprite" parent="."]
+position = Vector2( -32, -32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 672, 288, 32, 32 )
+
+[node name="LeftBridge2" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 704, 288, 32, 96 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="LeftBridge2"]
+position = Vector2( 0, 16 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LeftBridge2/StaticBody2D2"]
+position = Vector2( 0, -16 )
+polygon = PoolVector2Array( -16, 0, 16, 32, 16, 16, -16, -16 )
+
+[node name="LeftBridge3" type="Sprite" parent="."]
+position = Vector2( 32, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 736, 320, 32, 64 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="LeftBridge3"]
+position = Vector2( 0, 16 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LeftBridge3/StaticBody2D2"]
+polygon = PoolVector2Array( -16, 0, 16, 16, 16, 0, -16, -16 )
+
+[node name="LeftBridge4" type="Sprite" parent="."]
+position = Vector2( 64, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 768, 320, 32, 64 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="LeftBridge4"]
+position = Vector2( 0, 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBridge4/StaticBody2D2"]
+position = Vector2( 0, 8 )
+shape = SubResource( 1 )
+
+[node name="RightBridge1" type="Sprite" parent="."]
+position = Vector2( 96, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 800, 320, 32, 64 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="RightBridge1"]
+position = Vector2( 0, 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBridge1/StaticBody2D2"]
+position = Vector2( 0, 8 )
+shape = SubResource( 1 )
+
+[node name="RightBridge2" type="Sprite" parent="."]
+position = Vector2( 128, 16 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 832, 320, 32, 64 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="RightBridge2"]
+position = Vector2( 0, 16 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RightBridge2/StaticBody2D2"]
+position = Vector2( 0, 8 )
+polygon = PoolVector2Array( -16, 8, 16, -8, 16, -24, -16, -8 )
+
+[node name="RightBridge3" type="Sprite" parent="."]
+position = Vector2( 160, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 864, 288, 32, 96 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="RightBridge3"]
+position = Vector2( 0, 16 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RightBridge3/StaticBody2D2"]
+position = Vector2( 0, 8 )
+polygon = PoolVector2Array( -16, 8, 16, -24, 16, -40, -16, -8 )
+
+[node name="RightBridge4" type="Sprite" parent="."]
+position = Vector2( 192, -32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 896, 288, 32, 32 )
+
+[node name="BigTree" type="Sprite" parent="."]
+position = Vector2( 272, -128 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 800, 448, 96, 96 )
+
+[node name="SmallTree" type="Sprite" parent="."]
+position = Vector2( 376, -80 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 736, 480, 64, 64 )
+
+[node name="BigMushroom" type="Sprite" parent="."]
+position = Vector2( 304, 56 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 736, 544, 32, 32 )
+
+[node name="SmallMushroom" type="Sprite" parent="."]
+position = Vector2( 240, 88 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 704, 544, 32, 32 )
+
+[node name="Flower" type="Sprite" parent="."]
+position = Vector2( 136, 112 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 672, 544, 32, 32 )
+
+[node name="TopWaterLeft" type="Sprite" parent="."]
+position = Vector2( 96, 208 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 672, 384, 32, 32 )
+
+[node name="TopWaterRight" type="Sprite" parent="."]
+position = Vector2( 136, 208 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 704, 384, 32, 32 )
+
+[node name="BotWater" type="Sprite" parent="."]
+position = Vector2( 136, 248 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 704, 416, 32, 32 )
+
+[node name="BotWaterBubbles" type="Sprite" parent="."]
+position = Vector2( 96, 248 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 672, 416, 32, 32 )
+
+[node name="LadderBot" type="Sprite" parent="."]
+position = Vector2( 248, 248 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 736, 416, 32, 32 )
+
+[node name="LadderTop" type="Sprite" parent="."]
+position = Vector2( 248, 216 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 736, 384, 32, 32 )

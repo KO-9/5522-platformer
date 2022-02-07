@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/GFX/Sprites/Tiles/Tiles3.tres" type="TileSet" id=1]
+[ext_resource path="res://Scripts/Player/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Worlds/Teleport/Teleport.tscn" type="PackedScene" id=3]
+
+[node name="World2" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 1048582, -1610612734, 0, 1048585, -1610612734, 0, 1048588, -1610612734, 0, 1048591, -1610612734, 0, 1048594, -1610612734, 0, 1048597, -1610612734, 0, 1048600, -1610612734, 0, 1048603, -1610612734, 0, 1048606, -1610612734, 0, 1048609, -1610612734, 0, 1048612, -1610612734, 0, 1048615, -1610612734, 0, 1048618, -1610612734, 0 )
+
+[node name="player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 137.328, 225.018 )
+
+[node name="Teleport" parent="." instance=ExtResource( 3 )]
+position = Vector2( 689.018, 223.733 )
+world_scene = "res://Scripts/Worlds/World1/World.tscn"

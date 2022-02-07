@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Sprites/Erana Iasana_assets_FXes/0.0001/heavy_turret_prototype.fx.projectile/projectile3-1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Erana Iasana_assets_FXes/0.0001/heavy_turret_prototype.fx.projectile/projectile3-2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Erana Iasana_assets_FXes/0.0001/heavy_turret_prototype.fx.projectile/projectile3-3.png" type="Texture" id=4]
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends KinematicBody2D
+
+var THROW_VELOCITY = Vector2(350, -200)
+
+var velocity = Vector2.ZERO
+const MAX_BOUNCE = 3
+var bounce_count = 0
+const DAMAGE = 1
+
+func _ready():
+	add_collision_exception_with(Global.player)
+	set_physics_process(false)
+
+func _physics_process(delta):
+	velocity.y += Global.GRAVITY
+	var collision = move_and_collide(velocity * delta)
+	if collision != null:
+		_on_impact(collision.normal)
+		if collision.collider.is_in_group(\"Enemy\"):
+			collision.collider.takeDamage(DAMAGE)
+			queue_free()
+	if velocity.y == Vector2.ZERO.y && velocity.x == Vector2.ZERO.x:
+		get_parent().remove_child(self)
+
+func launch(direction):
+	if !direction:
+		direction = 1
+	else:
+		direction = -1
+	var temp = global_transform
+	var scene = get_tree().current_scene
+	get_parent().remove_child(self)
+	scene.add_child(self)
+	global_transform = temp
+	THROW_VELOCITY.x *= direction
+	velocity = THROW_VELOCITY
+	set_physics_process(true)
+
+func _on_impact(normal : Vector2):
+	bounce_count += 1
+	if bounce_count >= MAX_BOUNCE:
+		velocity = Vector2.ZERO
+	velocity = velocity.bounce(normal)
+	velocity.x = lerp(velocity.x, 0, 0.2)
+	velocity.y = lerp(velocity.y, 0, 0.2)
+	#if velocity.x < 0.001:
+	#	velocity.x = 0
+	#if velocity.y < 0.001:
+	#	velocity.y =0
+"
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 4, 4 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="FireBall" type="KinematicBody2D"]
+collision_layer = 8
+collision_mask = 5
+script = SubResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 4, 4 )
+shape = SubResource( 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.2, 1.33333 )
+frames = SubResource( 3 )
+frame = 1
+playing = true
+centered = false

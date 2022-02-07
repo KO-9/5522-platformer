@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/UI/TimerLabel.gd" type="Script" id=1]
+
+[node name="Timer" type="Control"]
+margin_right = 1024.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimerLabel" type="RichTextLabel" parent="."]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 457.642
+margin_bottom = 327.797
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timerms" type="Timer" parent="TimerLabel"]
+wait_time = 0.1
+[connection signal="timeout" from="TimerLabel/Timerms" to="TimerLabel" method="_on_Timerms_timeout"]
